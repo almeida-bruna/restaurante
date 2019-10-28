@@ -3,7 +3,7 @@ const router = express.Router();
 
 global.db = require('../db')
 
-// POST / InsertUpdate Dialogos
+// POST / Inserir Mensagem
 router.post('/messages', (req, res, next) => {
     mensage = req.body
     global.db.insertMessages(mensage, (err, result) => {
@@ -13,7 +13,7 @@ router.post('/messages', (req, res, next) => {
         })
     });
 });
-
+// GET / Buscar Mensagem
 router.get('/messages/id', (req, res, next) => {
     const idmessages = req.body.conversationId
     if (idmessages) {
@@ -27,23 +27,17 @@ router.get('/messages/id', (req, res, next) => {
         })
     }
 });
-
+// POST / Inserir Bot
 router.post('/bots', (req, res, next) => {
     const bot = req.body
-    if (bot.name && bot.id) {
-        global.db.insertBot(bot, (err, result) => {
-            if (err) res.status(500).json(err)
-            else res.json({
-                message: 'Produto cadastrado com sucesso!'
-            })
+    global.db.insertBot(bot, (err, result) => {
+        if (err) res.status(500).json(err)
+        else res.json({
+            message: 'Produto cadastrado com sucesso!'
         })
-    } else {
-        res.json({
-            message: 'Os campos name e id são obrigatorios'
-        })
-    }
+    })
 });
-
+// GET / Buscar Bot
 router.get('/bots/id', (req, res, next) => {
     const idBot = req.body.id
     if (idBot) {
@@ -57,11 +51,11 @@ router.get('/bots/id', (req, res, next) => {
         })
     }
 });
-
+// POST / Atualizar Bot
 router.post('/bots/id', (req, res, next) => {
-    var myquery = { "name": "bot" };
-    var newvalues = { $set: { name: req.body.name } };
-    if (req.body.id) {
+    var myquery = { "name": req.body.name };
+    var newvalues = { $set: { name: req.body.novo } };
+    if (req.body.name) {
         global.db.updateBotId(myquery, newvalues, (err, result) => {
             if (err) res.status(500).json(err)
             else res.json({
@@ -70,11 +64,11 @@ router.post('/bots/id', (req, res, next) => {
         })
     } else {
         res.json({
-            message: 'O campo id é obrigatorios'
+            message: 'O campo name é obrigatorios'
         })
     }
 });
-
+// POST / Deletar Bot
 router.post('/bots/remove', (req, res, next) => {
     var newvalues = { name: req.body.name };
     if (req.body.name) {

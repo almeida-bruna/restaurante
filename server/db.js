@@ -1,12 +1,12 @@
 const mongoClient = require("mongodb").MongoClient
 const ObjectId = require("mongodb").ObjectID
 
-const uri = 'mongodb+srv://bruna_03:ZmH9jN9GkoO7jnvJ@cluster0-zz9x9.mongodb.net/test?retryWrites=true&w=majority'
+const uri = 'mongodb+srv://bruna_03:59SLmeaZkO83CuZS@cluster0-zz9x9.mongodb.net/test?retryWrites=true&w=majority'
 mongoClient.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(conn => global.conn = conn.db("fermaquinas"))
+    .then(conn => global.conn = conn.db("Restaurante"))
     .catch(err => console.log(err))
 
 function insertMessages(message, callback) {
