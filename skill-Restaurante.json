@@ -245,42 +245,104 @@
   "dialog_nodes": [
     {
       "type": "event_handler",
-      "title": "handler_9_1572030101339",
+      "title": "handler_9_1572029421752",
       "output": {
-        "text": {
-          "values": [
-            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma forma de pagamento\" : \"E por ultimo, qual será a forma de pagamento\" ?>"
-          ],
-          "selection_policy": "sequential"
-        }
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha um carboidrato\" : \"E qual será o carboidrato?\" ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Batata",
+                "value": {
+                  "input": {
+                    "text": "Batata"
+                  }
+                }
+              },
+              {
+                "label": "Arroz",
+                "value": {
+                  "input": {
+                    "text": "Arroz"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
       },
-      "parent": "slot_4_1572030101333",
+      "parent": "slot_6_1572029421750",
       "event_name": "focus",
-      "dialog_node": "handler_9_1572030101339",
-      "previous_sibling": "handler_2_1572030101339"
+      "dialog_node": "handler_9_1572029421752",
+      "previous_sibling": "handler_4_1572029421752"
     },
     {
       "type": "event_handler",
-      "title": "handler_2_1572030101339",
+      "title": "handler_4_1572029421752",
       "output": {},
-      "parent": "slot_4_1572030101333",
+      "parent": "slot_6_1572029421750",
       "context": {
-        "pagamento": "@Forma_de_Pagamento"
+        "carboidrato": "@Carboidrato"
       },
-      "conditions": "@Forma_de_Pagamento",
+      "conditions": "@Carboidrato",
       "event_name": "input",
-      "dialog_node": "handler_2_1572030101339"
+      "dialog_node": "handler_4_1572029421752"
     },
     {
       "type": "event_handler",
       "title": "handler_5_1572028059309",
       "output": {
-        "text": {
-          "values": [
-            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma proteína\" : \"Vamos lá! escolha uma proteína\" ?>"
-          ],
-          "selection_policy": "sequential"
-        }
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma proteína\" : \"Vamos lá! escolha uma proteína.\" ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Frango",
+                "value": {
+                  "input": {
+                    "text": "Frango"
+                  }
+                }
+              },
+              {
+                "label": "Carne",
+                "value": {
+                  "input": {
+                    "text": "Carne"
+                  }
+                }
+              },
+              {
+                "label": "Peixe",
+                "value": {
+                  "input": {
+                    "text": "Peixe"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
       },
       "parent": "slot_8_1572028059290",
       "event_name": "focus",
@@ -298,6 +360,36 @@
       "conditions": "@Proteina",
       "event_name": "input",
       "dialog_node": "handler_10_1572028059309"
+    },
+    {
+      "type": "standard",
+      "title": "Batata",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "O tubérculo é fonte de fibras, ferro, cálcio, magnésio, manganês, zinco, potássio, além de vitaminas do complexo B, C, E e K."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Mesmo com tantos nutrientes, causa picos de glicose e insulina. Pessoas com intenção de emagrecer também precisam tomar cuidado, pois, cada 100 gramas tem 80 calorias."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Carboidrato:Batata",
+      "dialog_node": "node_1_1572288490089",
+      "previous_sibling": "node_4_1572288385818"
     },
     {
       "type": "standard",
@@ -326,7 +418,211 @@
       },
       "parent": "node_9_1571933627841",
       "conditions": "@Proteina:Frango",
-      "dialog_node": "node_4_1571933674817"
+      "dialog_node": "node_4_1571933674817",
+      "previous_sibling": "node_10_1572288178705"
+    },
+    {
+      "type": "standard",
+      "title": "Peixe",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Os peixes são grandes fontes de proteínas e podem ser usados para substituir as carnes e o frango da dieta."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "As proteínas são nutrientes importante para a formação da massa muscular, dos cabelos, da pele, das células e do sistema imunológico, sendo um nutriente essencial para a saúde."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Proteina:Peixe",
+      "dialog_node": "node_8_1572288306851",
+      "previous_sibling": "node_4_1571933674817"
+    },
+    {
+      "type": "standard",
+      "title": "Alface",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "A alface é um vegetal rico em fibras e fácil de ser incluído na alimentação diária, sendo responsável por trazer os benefícios à saúde como ajudar a emagrecer e a controlar a glicemia no sangue, pois é rico em fibras que dão saciedade e diminuem a absorção de carboidratos no intestino."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Salada:Alface",
+      "dialog_node": "node_3_1572289148119",
+      "previous_sibling": "node_2_1572289022716"
+    },
+    {
+      "type": "standard",
+      "title": "Mandioca",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "A mandioca é uma excelente fonte de carboidratos especiais, vitaminas e minerais. Os minerais Cálcio, Manganês, Cobre e Zinco, presentes na mandioca, ajudam a diminuir a perda de massa óssea, principalmente em mulheres na menopausa."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "As propriedades da mandioca podem ser explicadas pela sua excelente fonte de carboidratos, vitaminas do complexo B, vitamina C e minerais como magnésio, manganês, cobre, potássio. É fonte de fibras e isenta de glúten."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Carboidrato:Mandioca",
+      "dialog_node": "node_1_1572288667767",
+      "previous_sibling": "node_1_1572288490089"
+    },
+    {
+      "type": "standard",
+      "title": "Tomate",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Um dos principais benefícios da fruta para a saúde, segundo alguns estudos, é ajudar a prevenir o câncer, principalmente o de próstata: o tomate é composto por 2.573 mcg de licopeno, bio nutriente relacionado à interrupção da multiplicação de células defeituosas."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Salada:Tomate",
+      "dialog_node": "node_2_1572289022716",
+      "previous_sibling": "node_1_1572288667767"
+    },
+    {
+      "type": "standard",
+      "title": "Beterraba",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "As beterrabas contêm compostos de nitrato que podem melhorar o nível de colesterol. Também são uma ótima fonte de potássio, o que ajuda a compensar alguns dos efeitos da alta ingestão de sódio."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Salada:Beterraba",
+      "dialog_node": "node_5_1572289367053",
+      "previous_sibling": "node_4_1572289257037"
+    },
+    {
+      "type": "standard",
+      "title": "Arroz",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Além dos minerais, o cereal também é rico em vitaminas A, B1, B2, B3, B6 e E, que contribuem para a formação de glóbulos vermelhos e estimulam a regeneração celular."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "O melhor jeito de consumi-lo ainda é apostar na tradicional combinação com feijão ou outra leguminosa, como lentilha ou grão-de-bico."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Carboidrato:Arroz",
+      "dialog_node": "node_4_1572288385818",
+      "previous_sibling": "node_8_1572288306851"
+    },
+    {
+      "type": "standard",
+      "title": "Cenoura",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "A cenoura é uma raiz muito importante na alimentação, pois traz melhora na digestão e combate a prisão de ventre, por ser rica em fibras, preveni o envelhecimento precoce, por ser rica em vitamina A e antioxidantes."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Salada:Cenoura",
+      "dialog_node": "node_4_1572289257037",
+      "previous_sibling": "node_3_1572289148119"
+    },
+    {
+      "type": "standard",
+      "title": "Carne Vermelha",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "A carne vermelha é rica em diversos nutrientes fundamentais para o bom funcionamento do organismo. Podemos citar principalmente minerais e vitaminas lipossolúveis, além de ferro, zinco e vitaminas B6 e B12."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "A carne vermelha também é rica em proteína de alto valor biológico, aquela que representa grande parte do peso do corpo humano."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Proteina:Carne",
+      "dialog_node": "node_10_1572288178705"
     },
     {
       "type": "slot",
@@ -337,6 +633,16 @@
       "conditions": "!#Beneficios",
       "dialog_node": "slot_8_1572028059290",
       "previous_sibling": "node_7_1572030446170"
+    },
+    {
+      "type": "slot",
+      "title": "slot_9_1572029444978",
+      "output": {},
+      "parent": "node_7_1572027841418",
+      "variable": "$salada",
+      "conditions": "!#Beneficios",
+      "dialog_node": "slot_9_1572029444978",
+      "previous_sibling": "slot_6_1572029421750"
     },
     {
       "type": "slot",
@@ -377,16 +683,6 @@
       "variable": "$pagamento",
       "dialog_node": "slot_4_1572030101333",
       "previous_sibling": "slot_3_1572029795291"
-    },
-    {
-      "type": "slot",
-      "title": "slot_9_1572029444978",
-      "output": {},
-      "parent": "node_7_1572027841418",
-      "variable": "$salada",
-      "conditions": "!#Beneficios",
-      "dialog_node": "slot_9_1572029444978",
-      "previous_sibling": "slot_6_1572029421750"
     },
     {
       "type": "slot",
@@ -448,42 +744,57 @@
     },
     {
       "type": "event_handler",
-      "title": "handler_9_1572029421752",
-      "output": {
-        "text": {
-          "values": [
-            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha um carboidrato\" : \"E qual será o carboidrato?\" ?>"
-          ],
-          "selection_policy": "sequential"
-        }
-      },
-      "parent": "slot_6_1572029421750",
-      "event_name": "focus",
-      "dialog_node": "handler_9_1572029421752",
-      "previous_sibling": "handler_4_1572029421752"
-    },
-    {
-      "type": "event_handler",
-      "title": "handler_4_1572029421752",
-      "output": {},
-      "parent": "slot_6_1572029421750",
-      "context": {
-        "carboidrato": "@Carboidrato"
-      },
-      "conditions": "@Carboidrato",
-      "event_name": "input",
-      "dialog_node": "handler_4_1572029421752"
-    },
-    {
-      "type": "event_handler",
       "title": "handler_1_1572029444980",
       "output": {
-        "text": {
-          "values": [
-            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma salada\" : \"E qual salada vamos comer hoje?\" ?>"
-          ],
-          "selection_policy": "sequential"
-        }
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma salada\" : \"E qual salada vamos comer hoje?\n\" ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Tomate",
+                "value": {
+                  "input": {
+                    "text": "Tomate"
+                  }
+                }
+              },
+              {
+                "label": "Alface",
+                "value": {
+                  "input": {
+                    "text": "Alface"
+                  }
+                }
+              },
+              {
+                "label": "Cenoura",
+                "value": {
+                  "input": {
+                    "text": "Cenoura"
+                  }
+                }
+              },
+              {
+                "label": "Beterraba",
+                "value": {
+                  "input": {
+                    "text": "Beterraba"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
       },
       "parent": "slot_9_1572029444978",
       "event_name": "focus",
@@ -501,6 +812,69 @@
       "conditions": "@Salada",
       "event_name": "input",
       "dialog_node": "handler_6_1572029444980"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_9_1572030101339",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma forma de pagamento\" : \"E por ultimo, qual será a forma de pagamento\" ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Cartão de Crédito ",
+                "value": {
+                  "input": {
+                    "text": "Cartão de Crédito "
+                  }
+                }
+              },
+              {
+                "label": "Cartão de Débito",
+                "value": {
+                  "input": {
+                    "text": "Cartão de Débito"
+                  }
+                }
+              },
+              {
+                "label": "Dinheiro",
+                "value": {
+                  "input": {
+                    "text": "Dinheiro"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "slot_4_1572030101333",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1572030101339",
+      "previous_sibling": "handler_2_1572030101339"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_2_1572030101339",
+      "output": {},
+      "parent": "slot_4_1572030101333",
+      "context": {
+        "pagamento": "@Forma_de_Pagamento"
+      },
+      "conditions": "@Forma_de_Pagamento",
+      "event_name": "input",
+      "dialog_node": "handler_2_1572030101339"
     },
     {
       "type": "standard",
@@ -555,18 +929,18 @@
             "title": "",
             "options": [
               {
-                "label": "Confirmar",
+                "label": "Sim",
                 "value": {
                   "input": {
-                    "text": "Confirmar"
+                    "text": "Sim"
                   }
                 }
               },
               {
-                "label": "Não está certo",
+                "label": "Não",
                 "value": {
                   "input": {
-                    "text": "Não está certo"
+                    "text": "Não"
                   }
                 }
               }

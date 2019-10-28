@@ -11,7 +11,7 @@ const watson = require('./server/routes/watson');
 require('dotenv').config({
     silent: true
 });
-const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
+const port = process.env.PORT || process.env.VCAP_APP_PORT || 3004;
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));

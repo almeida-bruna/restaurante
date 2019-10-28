@@ -6,7 +6,7 @@ $(document).ready(function() {
         event.preventDefault();
         var userInput = $("#user-input").val();
         if (userInput) {
-            userText();
+            userText(userInput);
             callNode(userInput);
         }
     });
@@ -32,25 +32,32 @@ function watsonText(res) {
     $('.messages').append('<div class="message loading new"><figure class="avatar"><img src="./img/watson_logo-2.png" /></figure><span></span></div>');
     setTimeout(function() {
         $('.message.loading').remove();
-        if (res.output.text.length > 1) {
-            for (var i = 0; i < res.output.text.length; i++) {
-                $('.messages').append(`<div class="message new"><figure class="avatar">
-                <img src="./img/watson_logo-2.png" /></figure>${res.output.text[i]}</div>`);
-                $("#id").val(res.context.conversation_id);
-                updateScroll();
-            }
-        } else {
-            $('.messages').append(`<div class="message new"><figure class="avatar">
-                <img src="./img/watson_logo-2.png" /></figure>${res.output.text[0]}</div>`);
-            $("#id").val(res.context.conversation_id);
-            updateScroll();
+        if (res.output.generic.length > 0) {
+            res.output.generic.forEach(item => {
+                if (item.response_type === "text") {
+                    $('.messages').append(`<div class="message new"><figure class="avatar">
+                    <img src="./img/watson_logo-2.png" /></figure>${item.text}</div>`);
+                    $("#id").val(res.context.conversation_id);
+                    updateScroll();
+                }
+                if (item.response_type === "option") {
+                    var optionHtml = "<div class='content-option message new'>";
+                    item.options.forEach((option) => {
+                        var valor = option.value.input.text;
+                        optionHtml += `<a href="#" onclick="userOption('${valor}');" class="itens-option message new">${option.label}</a>`;
+                    });
+                    optionHtml += "</div>";
+                    $('.messages').append(optionHtml);
+                    $("#id").val(res.context.conversation_id);
+                    updateScroll();
+                }
+            });
         }
     }, 1000);
     contextDialog = res.context.conversation_id
 }
 
-function userText() {
-    var text = $('#user-input').val();
+function userText(text) {
     $('.messages').append(`<div class="message message-personal">${text}</div>`);
     $('#user-input').val("");
     updateScroll();
@@ -59,4 +66,9 @@ function userText() {
 function updateScroll() {
     var element = document.querySelector('.messages');
     element.scrollTop = element.scrollHeight;
+}
+
+function userOption(text) {
+    userText(text);
+    callNode(text);
 }
