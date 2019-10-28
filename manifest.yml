@@ -1,0 +1,8 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
+  name: sodre-santoro-advisor-v1
+  host: sodre-santoro-advisor-v1
+  disk_quota: 256M

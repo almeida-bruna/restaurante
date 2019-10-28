@@ -1,0 +1,19 @@
+{
+  "name": "z",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "renatolourenco",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "mongodb": "^3.3.3",
+    "watson-developer-cloud": "^2.37.0"
+  }
+}
