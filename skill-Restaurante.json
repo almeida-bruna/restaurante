@@ -1,0 +1,631 @@
+{
+  "name": "Restaurante",
+  "intents": [
+    {
+      "intent": "Montar_meu_prato",
+      "examples": [
+        {
+          "text": "Quero montar meu prato"
+        },
+        {
+          "text": "Quero escolher minha refeição"
+        },
+        {
+          "text": "reifeicao"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Sim",
+      "examples": [
+        {
+          "text": "correto"
+        },
+        {
+          "text": "sim"
+        },
+        {
+          "text": "Certo"
+        },
+        {
+          "text": "Confirmado"
+        },
+        {
+          "text": "Sim, esta certo"
+        },
+        {
+          "text": "yes"
+        },
+        {
+          "text": "si"
+        },
+        {
+          "text": "Confirmar"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Não",
+      "examples": [
+        {
+          "text": "no"
+        },
+        {
+          "text": "Incorreto"
+        },
+        {
+          "text": "not"
+        },
+        {
+          "text": "Negativo"
+        },
+        {
+          "text": "Não"
+        },
+        {
+          "text": "Não está certo"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Beneficios",
+      "examples": [
+        {
+          "text": "qual é o beneficio do frango?"
+        },
+        {
+          "text": "Quais os beneficios"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Endereco",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Rodovia",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Avenida",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Viela",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bairro",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Numero",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Estrada",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Rua",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Proteina",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Peixe",
+          "synonyms": [
+            "Peixe Frito",
+            "Peixe Grelhado"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Carne",
+          "synonyms": [
+            "Carne Vermelha",
+            "Carne ao Ponto",
+            "Carne Mal Passada",
+            "Carne Bem Passada"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Frango",
+          "synonyms": [
+            "Frango Frito",
+            "Frango Grelhado"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Forma_de_Pagamento",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Dinheiro",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Cartão de Débito",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Cartão de Crédito",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Salada",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Cenoura",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Tomate",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Beterraba",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Alface",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Carboidrato",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Batata",
+          "synonyms": [
+            "Batata Frita",
+            "Batata Saudé"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Arroz",
+          "synonyms": [
+            "Arroz Integral"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Mandioca",
+          "synonyms": [
+            "Mandioca Frita",
+            "Mandioca Cozida"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "pt-br",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "ff5bf930-3e56-4694-a959-987e72a1e4f1",
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "title": "handler_9_1572030101339",
+      "output": {
+        "text": {
+          "values": [
+            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma forma de pagamento\" : \"E por ultimo, qual será a forma de pagamento\" ?>"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1572030101333",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1572030101339",
+      "previous_sibling": "handler_2_1572030101339"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_2_1572030101339",
+      "output": {},
+      "parent": "slot_4_1572030101333",
+      "context": {
+        "pagamento": "@Forma_de_Pagamento"
+      },
+      "conditions": "@Forma_de_Pagamento",
+      "event_name": "input",
+      "dialog_node": "handler_2_1572030101339"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_5_1572028059309",
+      "output": {
+        "text": {
+          "values": [
+            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma proteína\" : \"Vamos lá! escolha uma proteína\" ?>"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1572028059290",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1572028059309",
+      "previous_sibling": "handler_10_1572028059309"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_10_1572028059309",
+      "output": {},
+      "parent": "slot_8_1572028059290",
+      "context": {
+        "proteina": "@Proteina"
+      },
+      "conditions": "@Proteina",
+      "event_name": "input",
+      "dialog_node": "handler_10_1572028059309"
+    },
+    {
+      "type": "standard",
+      "title": "Frango",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Em termos de vitaminas, contém Vitamina C, Tiamina, Riboflavina, Niacina, Vitamina B6, Ácido Fólico, Vitamina B12, Vitamina A, Vitamina E, Vitamina D e Vitamina K. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Então, Confira os Benefícios do Frango Para Saúde. Frango Tem um Alto Teor de Proteína: O Frango é uma das melhores fonte de proteína para a dieta."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1571933627841",
+      "conditions": "@Proteina:Frango",
+      "dialog_node": "node_4_1571933674817"
+    },
+    {
+      "type": "slot",
+      "title": "slot_8_1572028059290",
+      "output": {},
+      "parent": "node_7_1572027841418",
+      "variable": "$proteina",
+      "conditions": "!#Beneficios",
+      "dialog_node": "slot_8_1572028059290",
+      "previous_sibling": "node_7_1572030446170"
+    },
+    {
+      "type": "slot",
+      "title": "slot_6_1572029421750",
+      "output": {},
+      "parent": "node_7_1572027841418",
+      "variable": "$carboidrato",
+      "conditions": "!#Beneficios",
+      "dialog_node": "slot_6_1572029421750",
+      "previous_sibling": "slot_8_1572028059290"
+    },
+    {
+      "type": "standard",
+      "title": "Incorreto",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Infelizmente esse fluxo ainda não foi desenvolvido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1572027841418",
+      "conditions": "#Não",
+      "dialog_node": "node_7_1572030446170",
+      "previous_sibling": "node_8_1572030440351"
+    },
+    {
+      "type": "slot",
+      "title": "slot_4_1572030101333",
+      "output": {},
+      "parent": "node_7_1572027841418",
+      "variable": "$pagamento",
+      "dialog_node": "slot_4_1572030101333",
+      "previous_sibling": "slot_3_1572029795291"
+    },
+    {
+      "type": "slot",
+      "title": "slot_9_1572029444978",
+      "output": {},
+      "parent": "node_7_1572027841418",
+      "variable": "$salada",
+      "conditions": "!#Beneficios",
+      "dialog_node": "slot_9_1572029444978",
+      "previous_sibling": "slot_6_1572029421750"
+    },
+    {
+      "type": "slot",
+      "title": "slot_3_1572029795291",
+      "output": {},
+      "parent": "node_7_1572027841418",
+      "variable": "$endereco",
+      "dialog_node": "slot_3_1572029795291",
+      "previous_sibling": "slot_9_1572029444978"
+    },
+    {
+      "type": "standard",
+      "title": "Confirmado",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Seu pedido foi confirmado. Obrigada pela preferencia."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1572027841418",
+      "conditions": "#Sim",
+      "dialog_node": "node_8_1572030440351"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_2_1572029795294",
+      "output": {
+        "text": {
+          "values": [
+            "<? (returning_from_digression)? \"Agora voltando ao assunto, informe o seu endereço\" : \"Agora me informe o endereço\" ?>"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1572029795291",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1572029795294",
+      "previous_sibling": "handler_5_1572029795294"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_5_1572029795294",
+      "output": {},
+      "parent": "slot_3_1572029795291",
+      "context": {
+        "end": "<? input.text?>",
+        "endereco": "@Endereco"
+      },
+      "conditions": "@Endereco",
+      "event_name": "input",
+      "dialog_node": "handler_5_1572029795294"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_9_1572029421752",
+      "output": {
+        "text": {
+          "values": [
+            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha um carboidrato\" : \"E qual será o carboidrato?\" ?>"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_6_1572029421750",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1572029421752",
+      "previous_sibling": "handler_4_1572029421752"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_4_1572029421752",
+      "output": {},
+      "parent": "slot_6_1572029421750",
+      "context": {
+        "carboidrato": "@Carboidrato"
+      },
+      "conditions": "@Carboidrato",
+      "event_name": "input",
+      "dialog_node": "handler_4_1572029421752"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_1_1572029444980",
+      "output": {
+        "text": {
+          "values": [
+            "<? (returning_from_digression)? \"Agora voltando ao assunto, escolha uma salada\" : \"E qual salada vamos comer hoje?\" ?>"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_9_1572029444978",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1572029444980",
+      "previous_sibling": "handler_6_1572029444980"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_6_1572029444980",
+      "output": {},
+      "parent": "slot_9_1572029444978",
+      "context": {
+        "salada": "@Salada"
+      },
+      "conditions": "@Salada",
+      "event_name": "input",
+      "dialog_node": "handler_6_1572029444980"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_9_1571933627841"
+    },
+    {
+      "type": "folder",
+      "title": "Quais os Benefícios ",
+      "conditions": "#Beneficios",
+      "digress_in": "returns",
+      "dialog_node": "node_9_1571933627841",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_7_1572027841418"
+    },
+    {
+      "type": "frame",
+      "title": "Montar Refeição",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Os dados estão corretos?<br>Refeição: $proteina, $carboidrato e $salada.<br>Endereço: $end<br>Forma de Pagamento: $pagamento"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Confirmar",
+                "value": {
+                  "input": {
+                    "text": "Confirmar"
+                  }
+                }
+              },
+              {
+                "label": "Não está certo",
+                "value": {
+                  "input": {
+                    "text": "Não está certo"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#Montar_meu_prato",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_7_1572027841418",
+      "digress_out": "allow_all",
+      "previous_sibling": "Bem-vindo",
+      "digress_out_slots": "allow_all"
+    },
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    }
+  ],
+  "workspace_id": "ff5bf930-3e56-4694-a959-987e72a1e4f1",
+  "counterexamples": [
+    {
+      "text": "Cartão de crédito"
+    },
+    {
+      "text": "frango"
+    },
+    {
+      "text": "Rua pedro valadares, n° 338"
+    }
+  ],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
